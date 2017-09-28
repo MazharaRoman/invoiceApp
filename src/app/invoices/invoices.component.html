@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <button class="btn btn-primary" (click)="onShowDialog()" data-toggle="modal" data-target="#myModal">Craete invoice</button>
+</div>
+<br>
+<div class="container">
+  <div class="list-group" *ngIf="invoices">
+    <a class="list-group-item" *ngFor="let invoice of invoices" (click)="onShowDialog(invoice)">
+      <h4 class="list-group-item-heading">Invoice: <strong>{{invoice.id}}</strong> for <strong>{{invoice.customer?.name}}</strong> </h4>
+      <p class="list-group-item-text">Totlal price: {{invoice.total}}$. Discount: {{invoice.discount}}%</p>
+    </a>
+  </div>
+</div>
+
+<app-dialog-form 
+[data]="invoice" 
+id="myModal"
+class="modal fade" 
+role="dialog"></app-dialog-form>
